@@ -43,6 +43,72 @@ If you only journal, or only do research, this is overkill.
 
 ---
 
+## Why it works (the neuroscience)
+
+The vault isn't designed around a productivity philosophy — it's designed around how memory actually works.
+
+### The brain doesn't store information in folders
+
+Long-term memory is associative. You don't retrieve a fact by remembering its location; you retrieve it by following links from related concepts — what cognitive scientists call *spreading activation* through semantic networks. A folder hierarchy fights that. Every note has exactly one home, and you're forced to remember where you put it.
+
+This vault prioritizes links and tags over nesting. The numbered folders are a coarse domain split, not a taxonomy. The real structure emerges through `[[wikilinks]]`, `#tags`, and Dataview queries that surface notes via their relationships — closer to how associative recall actually works.
+
+### Cognitive offloading
+
+Working memory holds about four items at once (Cowan, 2001). Anything past that is gone unless it's externalized. The *extended mind* thesis (Clark & Chalmers, 1998) argues that external tools — notebooks, files, search — function as genuine extensions of cognition, not just storage. A well-designed vault is a literal extension of your working memory.
+
+The templates here are deliberately minimal: frontmatter, a Dataview query, blank space. They remove the *decision* of how to structure a note so you can spend working memory on the content, not the container.
+
+### Spaced retrieval
+
+The Spaced Repetition plugin turns marked passages in your own notes into flashcards scheduled along the Ebbinghaus forgetting curve. You don't maintain a separate deck — you review your own writing on the schedule that actually produces durable memory.
+
+### Dual coding
+
+Paivio's dual coding theory: information encoded both verbally and visually has more retrieval pathways than either alone. Obsidian's graph view, Canvas, and Bases give you visual representations of the same notes you wrote linearly. Same idea, two encodings, more hooks for recall.
+
+---
+
+## How it benefits neurodivergent thinking
+
+External scaffolding helps any brain, but it's load-bearing for brains with executive function differences. The choices in this setup are shaped by what helps in practice — not by a generic "everyone should be more organized" philosophy.
+
+### ADHD
+
+| Challenge | How the vault helps |
+|---|---|
+| Working memory limits | Frontmatter and templates externalize structure so you don't hold it in your head |
+| Choice paralysis on a blank page | Templates pre-decide the fields, removing the "what does this note need" friction |
+| Object permanence — out of sight, out of mind | Smart Connections finds the note you forgot existed via semantic similarity, not exact recall |
+| Hyperfocus tangents getting lost | Capture into `0. Notes/` without thinking, retrieve later by topic instead of by location |
+| Time blindness | Calendar plugin + daily notes give time a visual anchor |
+| Decision fatigue on filing | Six numbered domain folders, not sixty arbitrary ones |
+| Task switching cost | Single vault means no app/context switch between learning, life, and work notes |
+
+### Autism
+
+| Strength or preference | How the vault helps |
+|---|---|
+| Systemizing and pattern recognition | Graph view and Dataview surface relationships you can see at a glance |
+| Predictability and consistent structure | Templates produce identical-shaped notes; folder convention is fixed |
+| Deep focus on special interests | Domain folders contain rabbit holes without polluting other areas |
+| Sensory regulation | Cupertino theme is muted, ribbon hidden; no notifications, no social feed, no algorithm |
+| Literal interpretation | Frontmatter fields are explicit and named — no guessing at intent |
+
+### Dyslexia
+
+| Challenge | How the vault helps |
+|---|---|
+| Difficulty retrieving by exact spelling | Smart Connections searches by meaning — type roughly what you remember |
+| Visual fatigue with dense text | SF Pro typography + Cupertino spacing; Style Settings exposes font-size and line-height controls |
+| Sequential reading load | Graph view and Canvas let you navigate spatially instead of through long lists |
+
+### A note on framing
+
+Neurodivergence isn't a deficit to be patched. This vault doesn't try to make an ADHD or autistic brain work like a neurotypical one; it removes the parts of conventional note-taking that punish those brains for being themselves. It's a tool, not a treatment. If you're struggling, talk to a clinician.
+
+---
+
 ## What you get
 
 - **Vault structure** — numbered top-level folders so they sort predictably (`0. Notes` through `5. Experiments`).

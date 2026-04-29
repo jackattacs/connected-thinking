@@ -86,7 +86,14 @@ Vault ships empty. Notes are yours.
 
 1. `git clone https://github.com/vokal-jack/connected-thinking ~/Documents/connected-thinking`
 2. Obsidian → *Open folder as vault* → `connected-thinking/brAIn/`
-3. Settings → Community plugins → install all 6 (auto-enable from config)
+3. Settings → Community plugins → turn off Restricted mode, then install all six (links below). They auto-enable once installed because the vault config already lists them as enabled.
+
+   - [Dataview](https://obsidian.md/plugins?id=dataview) — SQL-like queries inside notes
+   - [Templater](https://obsidian.md/plugins?id=templater-obsidian) — scripted templates
+   - [Calendar](https://obsidian.md/plugins?id=calendar) — daily-note navigation
+   - [Smart Connections](https://obsidian.md/plugins?id=smart-connections) — local AI semantic search + chat
+   - [Style Settings](https://obsidian.md/plugins?id=obsidian-style-settings) — theme customization UI
+   - [Spaced Repetition](https://obsidian.md/plugins?id=obsidian-spaced-repetition) — flashcards from your own notes
 4. Settings → Templates and Templater → folder = `Templates`
 5. Settings → Appearance → Theme → Cupertino
 6. *(optional)* `claude .` from the repo root

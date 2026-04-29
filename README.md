@@ -2,7 +2,7 @@
 
 Obsidian vault + Claude Code harness. Built for ADHD brains.
 
-Open it. Start writing. The system stays out of your way.
+Run `claude .` for a 10-minute onboarding that personalizes the vault to how *you* think. Notes link themselves like associative memory after that.
 
 ---
 
@@ -26,6 +26,36 @@ Result: a graveyard of half-built vaults, retried every few months.
 - **Working memory is tiny.** Templates pre-decide structure so you only think about content.
 - **Spaced retrieval beats willpower.** Spaced Repetition plugin schedules reviews from passages in your own notes.
 - **Visual + verbal beats either alone.** Graph view, Canvas, and Bases give spatial encodings of the same notes.
+
+---
+
+## How notes connect themselves
+
+The vault behaves like an associative network. Notes don't sit in folders waiting to be retrieved by hand — they surface each other based on what they link to, the way related thoughts trigger each other in a brain.
+
+**The mechanism**
+
+- Every `[[wikilink]]` you write creates a directed edge in the graph.
+- Subject, Definition, and Resource templates ship with an embedded Dataview query:
+
+  ```dataview
+  list
+  from [[]] and #definition
+  ```
+
+  `[[]]` resolves to the current note. Translation: *list every note that links to this one and is tagged `#definition`*.
+
+**What this means in practice**
+
+Write a Definition note about "Stoicism", tag it `#definition`, and link it back to a Subject note "Philosophy". The Philosophy note's embedded query auto-lists Stoicism. Forever after. No filing. No indexing. No maintenance.
+
+**Why it compounds**
+
+- You write each connection once. The system uses it many times.
+- The graph gets *more* useful with size, not less — opposite of folder hierarchies, where size buries things.
+- Open any note in your active field and the relevant definitions, resources, and reflections you've ever linked to it are already on the page.
+
+This mirrors Hebbian learning at the neural level: cells that fire together wire together. Notes you've connected once stay connected.
 
 ---
 
@@ -63,7 +93,7 @@ Tool, not treatment. Talk to a clinician if you're struggling.
 | Theme | Cupertino — calm, low-stim |
 | Plugins | Dataview, Templater, Calendar, Smart Connections, Style Settings, Spaced Repetition |
 | AI search | Smart Connections — local embeddings, optional Ollama chat |
-| AI authoring | Claude Code with 5 Obsidian skills + book-analyst |
+| AI authoring | Claude Code with 5 Obsidian-aware skills + 2 custom (onboarding, book-analyst) |
 
 Vault ships empty. Notes are yours.
 
@@ -96,7 +126,13 @@ Vault ships empty. Notes are yours.
    - [Spaced Repetition](https://obsidian.md/plugins?id=obsidian-spaced-repetition) — flashcards from your own notes
 4. Settings → Templates and Templater → folder = `Templates`
 5. Settings → Appearance → Theme → Cupertino
-6. *(optional)* `claude .` from the repo root
+6. **First-run onboarding** (recommended)
+
+   ```sh
+   claude .
+   ```
+
+   On the first session, Claude reads `CLAUDE.md`, sees no Profile note exists, and runs a 10-minute conversation to learn how you think, what you're working on, and what you want the vault to capture. It then writes your Profile, Goals, and starter Subject notes — the seed graph from which everything else grows. Re-run any time by saying "onboard me" or `/onboard`.
 
 ---
 
@@ -110,17 +146,6 @@ Vault ships empty. Notes are yours.
 - `3. Ventures/` — work, businesses
 - `4. Archives/` — old
 - `5. Experiments/` — sandbox
-
-**Self-organizing notes**
-
-Definition and Resource templates contain:
-
-```dataview
-list
-from [[]] and #definition
-```
-
-Link a note once. Parent picks it up forever. No manual indexing.
 
 **AI**
 

@@ -1,62 +1,89 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for Claude Code when working in this repository.
 
-## Overview
+## First-run onboarding (do this before anything else)
 
-This is a personal Obsidian knowledge management system organized into three separate vaults:
+If `brAIn/2. Life/Profile.md` does not exist when this session opens, the user has not been onboarded. Launch the **onboarding** skill (in `.agents/skills/onboarding/`) before responding to anything else, unless the user has explicitly told you to skip onboarding or to do something else first.
 
-- **Education/** — Academic learning, subject notes, definitions, and resources
-- **Life/** — Personal goals, inspiration, notes, and skill development
-- **Ventures/** — Business and entrepreneurial tracking
+The onboarding skill conducts a ~10 minute structured conversation that learns who the user is, what they're learning, how they think, and what they want to capture. It then writes the user's Profile, Goals, and starter Subject notes into the vault. After it runs, the vault has a meaningful initial graph instead of empty folders.
 
-## Vault Structure Pattern
+If Profile.md exists, do not re-run onboarding unless the user explicitly asks.
 
-All three vaults follow the same numbered-folder convention:
-- `0. Notes/` — General/unsorted notes
-- `1. [Primary Category]/` — Main organizational category (Subjects, Businesses, etc.)
-- `2. [Secondary Category]/` — Secondary category (Resources, Companies, etc.)
-- `3. Definitions/` — Definition entries (Education only)
-- `4. Archives/` — Archived materials
-- `Templates/` — Templater templates for note creation
+## Repository overview
 
-## Note Frontmatter
+This is a single Obsidian vault (`brAIn/`) plus a Claude Code harness, packaged as a plug-and-play starter for ADHD and neurodivergent thinkers.
 
-Notes use YAML frontmatter. Common fields vary by note type:
+## Vault structure
 
-**Notes Template:** `Date`, `Subject`
+`brAIn/` is one Obsidian vault. Top-level folders:
 
-**Definition Template:** `tags`, `Subject`, `Section`
+- `0. Notes/` — General / unsorted / inbox
+- `1. Education/` — Subjects, definitions, learning resources
+- `2. Life/` — Personal goals, inspiration, skills, reading, the user's Profile
+- `3. Ventures/` — Business and entrepreneurial tracking
+- `4. Archives/` — Old / superseded materials
+- `5. Experiments/` — Sandbox
+- `Templates/` — Templater source files
 
-**Resource Template:** `tags`, `Category`, `Subject`, `Section`, `Date`
+Numbering is intentional — it forces a stable sort order in the file tree.
 
-**Subject Template:** `tags`, `Category`, `Subject`
+## Note frontmatter
 
-## Plugins in Use
+YAML frontmatter, varies by note type:
 
-- **Dataview** — SQL-like queries embedded in notes (Education and Life vaults). Queries use `from [[]] and #tag` syntax to pull related notes.
-- **Templater** — Scripted templates in `Templates/` folders; use `<% %>` syntax.
-- **Smart Connections** — AI semantic search powered by local embeddings (TaylorAI/bge-micro-v2 via Transformers) and Ollama for chat. Embeddings are cached in `.smart-env/`.
-- **Calendar** — Daily note navigation.
-- **Style Settings** — Theme customization.
-- **Highlighter** — Text highlighting (Life and Ventures vaults).
+| Template | Fields |
+|---|---|
+| Notes | `Date`, `Subject` |
+| Definition | `tags`, `Subject`, `Section` |
+| Resource | `tags`, `Category`, `Subject`, `Section`, `Date` |
+| Subject | `tags`, `Category`, `Subject` |
+| Profile (created by onboarding) | `tags: [profile]`, `Date` |
+| Goals (created by onboarding) | `tags: [goals]`, `Date` |
 
-## Dataview Query Pattern
+## Plugins
 
-Definition and Resource templates use backlink-scoped queries:
+| Plugin | Purpose |
+|---|---|
+| Dataview | SQL-like queries embedded in notes — uses `from [[]] and #tag` syntax to pull related notes |
+| Templater | Scripted templates in `Templates/`; uses `<% %>` syntax |
+| Calendar | Daily-note navigation |
+| Smart Connections | Local AI semantic search via embeddings (TaylorAI/bge-micro-v2 through Transformers); optional Ollama for chat. Embeddings cache in `.smart-env/` |
+| Style Settings | Theme customization UI |
+| Spaced Repetition | Flashcard / SRS over passages in any note |
+
+## Dataview pattern
+
+Definition, Resource, and Subject notes use backlink-scoped queries:
+
 ```dataview
 list
 from [[]] and #definition
 ```
-This pulls all notes tagged `#definition` that also link back to the current note.
 
-## AI/Smart Connections Config
+`[[]]` resolves to the current note. The query says: list every note that links to this one and is tagged `#definition`. Notes self-organize through this — write a link once and the parent note picks it up forever.
 
-Each vault's `.smart-env/smart_env.json` configures:
+## Smart Connections config
+
+`.smart-env/smart_env.json` (per-user, gitignored):
+
 - Embedding model: `TaylorAI/bge-micro-v2` (local, via Transformers)
-- Chat model: Ollama (local)
-- Cloud fallback: OpenRouter
+- Chat model: Ollama (local) by default
+- Cloud fallback: OpenRouter (optional)
 - Min block size for embeddings: 200 characters
-- Excludes: Untitled files
 
-Processed embeddings are stored in `.smart-env/multi/` as `.ajson` files — do not edit these manually.
+Embeddings live in `.smart-env/multi/` as `.ajson` files. Do not edit manually.
+
+## Skills
+
+Skills under `.agents/skills/`:
+
+| Skill | Source | Purpose |
+|---|---|---|
+| onboarding | local | First-run conversation; seeds Profile, Goals, Subject notes |
+| book-analyst | local | Walks the user through reflecting on a book; writes a book analysis note |
+| defuddle | github (kepano/obsidian-skills) | Strip clutter from web pages and import as clean markdown |
+| json-canvas | github (kepano) | Create and edit `.canvas` files |
+| obsidian-bases | github (kepano) | Create and edit `.base` files |
+| obsidian-cli | github (kepano) | Drive Obsidian via its CLI |
+| obsidian-markdown | github (kepano) | Write Obsidian-flavored markdown (wikilinks, callouts, embeds, properties) |

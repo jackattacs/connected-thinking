@@ -30,6 +30,11 @@
       "source": "kepano/obsidian-skills",
       "sourceType": "github",
       "computedHash": "cacc9058a35ad3fd4985b4c31121bff8202f1337c39808c1326ded6a19a7915f"
+    },
+    "onboarding": {
+      "source": ".agents/skills/onboarding",
+      "sourceType": "local",
+      "computedHash": ""
     }
   }
 }

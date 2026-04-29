@@ -1,0 +1,15 @@
+# Obsidian per-machine / generated state
+**/.obsidian/workspace.json
+**/.obsidian/workspace-mobile.json
+**/.obsidian/plugins/
+**/.smart-env/
+**/.trash/
+
+# OS / editor
+.DS_Store
+*.swp
+
+# Claude Code per-machine
+.claude/settings.json
+.claude/plans/
+.claude/projects/

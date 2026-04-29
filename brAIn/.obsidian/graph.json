@@ -1,0 +1,107 @@
+{
+  "collapse-filter": true,
+  "search": "-path:Templates  ",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:Chemistry",
+      "color": {
+        "a": 1,
+        "rgb": 16739584
+      }
+    },
+    {
+      "query": "path:Physics",
+      "color": {
+        "a": 1,
+        "rgb": 37354
+      }
+    },
+    {
+      "query": "path:Biology OR path:Mycology",
+      "color": {
+        "a": 1,
+        "rgb": 765704
+      }
+    },
+    {
+      "query": "path:\"Computer Science\"",
+      "color": {
+        "a": 1,
+        "rgb": 47316
+      }
+    },
+    {
+      "query": "path:Philosophy",
+      "color": {
+        "a": 1,
+        "rgb": 4002964
+      }
+    },
+    {
+      "query": "path:Psychology",
+      "color": {
+        "a": 1,
+        "rgb": 16056407
+      }
+    },
+    {
+      "query": "path:Mathematics OR path:Precalculus",
+      "color": {
+        "a": 1,
+        "rgb": 64511
+      }
+    },
+    {
+      "query": "path:Language OR path:English",
+      "color": {
+        "a": 1,
+        "rgb": 13369344
+      }
+    },
+    {
+      "query": "path:Engineering",
+      "color": {
+        "a": 1,
+        "rgb": 4620980
+      }
+    },
+    {
+      "query": "path:\"2. Life\"",
+      "color": {
+        "a": 1,
+        "rgb": 16761856
+      }
+    },
+    {
+      "query": "path:\"3. Ventures\"",
+      "color": {
+        "a": 1,
+        "rgb": 58998
+      }
+    },
+    {
+      "query": "path:Neuroscience OR path:Cognition",
+      "color": {
+        "a": 1,
+        "rgb": 11141375
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": false,
+  "textFadeMultiplier": -1,
+  "nodeSizeMultiplier": 2.40191200657895,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": false,
+  "centerStrength": 0.282401315789474,
+  "repelStrength": 10.2870065789474,
+  "linkStrength": 0.584662828947368,
+  "linkDistance": 89,
+  "scale": 0.14326467576244242,
+  "close": true
+}

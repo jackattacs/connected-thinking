@@ -84,7 +84,7 @@ Vault ships empty. Notes are yours.
 
 ## Setup
 
-1. `git clone https://github.com/vokal-jack/connected-thinking ~/Documents/connected-thinking`
+1. `git clone https://github.com/jackattacs/connected-thinking ~/Documents/connected-thinking`
 2. Obsidian → *Open folder as vault* → `connected-thinking/brAIn/`
 3. Settings → Community plugins → turn off Restricted mode, then install all six (links below). They auto-enable once installed because the vault config already lists them as enabled.
 

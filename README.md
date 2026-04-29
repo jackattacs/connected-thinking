@@ -1,32 +1,38 @@
 # Connected Thinking
 
-An opinionated Obsidian vault + Claude Code harness for people who want a single second brain across learning, life, and work — with local AI built in.
+An opinionated Obsidian vault + Claude Code harness for a single second brain across learning, life, and work — with local AI built in.
 
-Clone the repo, open the vault, and you've skipped the six months most people spend tweaking their Obsidian setup.
-
----
-
-## Why this exists
-
-Most "Obsidian starter" vaults fall into one of two camps:
-
-- **Pure note-taking systems** (Zettelkasten, LYT, PARA): heavy on theory, light on tooling. You're left to wire up Dataview, Templater, and AI plugins yourself.
-- **Single-purpose vaults**: built for journaling, or research, or project management — but not all three.
-
-Connected Thinking is for people whose brain doesn't split cleanly between domains. One vault holds your subjects of study, life goals, and ventures, and the tooling helps you draw connections across them instead of siloing them.
-
-It's also AI-native: Smart Connections gives you semantic search over your notes locally, and the bundled Claude Code harness lets an agent navigate, query, and edit the vault directly — using skills that understand Obsidian's flavor of markdown, Bases, and Canvas.
+Clone, open, and skip the six months most people spend tweaking their setup.
 
 ---
 
-## Who it's for
+## Is this for you?
 
-- You take notes across multiple life domains (learning, personal, work) and want them in one place.
-- You want AI assistance on your own notes without uploading them to a cloud service.
-- You like keyboard-driven, markdown-based workflows over Notion-style block editors.
-- You're comfortable in a terminal and want an editable, version-controlled vault — not a SaaS product.
+Most Obsidian starters are either heavy on theory and light on tooling (Zettelkasten, LYT, PARA), or built around a single use case (journaling, research). This one's for people whose brain doesn't split cleanly between domains, who want one vault for everything, and who want AI assistance on their own notes without uploading anything to a SaaS.
 
-If you only journal, or only do research, this is overkill.
+You'll get the most out of it if you:
+
+- Take notes across multiple life domains and want to draw connections between them
+- Prefer markdown files on your disk over cloud-locked block editors
+- Want local AI search, and optionally a Claude Code agent that can edit the vault directly
+- Are comfortable in a terminal
+
+If you only journal, or only research, this is overkill.
+
+---
+
+## What's inside
+
+| Layer | What ships |
+|---|---|
+| **Vault structure** | Six numbered top-level folders (`0. Notes` → `5. Experiments`) that sort predictably, plus a `Templates/` folder |
+| **Templates** | Subject, Resource, Definition, Book Analysis — frontmatter-driven, with embedded Dataview queries so notes self-organize as you tag and link them |
+| **Theme** | Cupertino, pre-bundled — SF Pro fonts, calm muted accents, ribbon hidden |
+| **Plugins** | Six community plugins pre-enabled in the config: Dataview, Templater, Calendar, Smart Connections, Style Settings, Spaced Repetition |
+| **Local AI search** | Smart Connections — local embeddings (TaylorAI/bge-micro-v2), optional Ollama chat over your notes |
+| **AI authoring** | Claude Code harness with five Obsidian-aware skills (defuddle, json-canvas, obsidian-bases, obsidian-cli, obsidian-markdown) plus a custom book-analyst skill |
+
+What you **don't** get: notes. The vault ships empty.
 
 ---
 
@@ -34,44 +40,44 @@ If you only journal, or only do research, this is overkill.
 
 | | Connected Thinking | PARA | Zettelkasten / LYT | Notion |
 |---|---|---|---|---|
-| **Organization** | Numbered domain folders (Education / Life / Ventures) | Projects / Areas / Resources / Archives | Atomic notes + tag graph | Nested pages + databases |
+| **Organization** | Numbered domain folders | Projects / Areas / Resources / Archives | Atomic notes + tag graph | Nested pages + databases |
 | **Templates** | Templater + Dataview, frontmatter-driven | Manual | Manual | Native templates |
-| **AI search** | Local embeddings (Smart Connections) | None | None | Cloud (Notion AI) |
-| **AI authoring** | Claude Code harness with vault-aware skills | None | None | Notion AI (chat only) |
-| **Data ownership** | Markdown files on your disk | Markdown files | Markdown files | Cloud-hosted, exportable |
-| **Setup time** | 10 min (this repo) | DIY | DIY | None — but locked in |
+| **AI search** | Local embeddings | None | None | Cloud (Notion AI) |
+| **AI authoring** | Claude Code with vault-aware skills | None | None | Notion AI (chat only) |
+| **Data ownership** | Markdown on your disk | Markdown | Markdown | Cloud-hosted |
+| **Setup time** | 10 min | DIY | DIY | None — but locked in |
 
 ---
 
-## Why it works (the neuroscience)
+## Why it works
 
-The vault isn't designed around a productivity philosophy — it's designed around how memory actually works.
+The vault isn't designed around a productivity philosophy. It's designed around how memory actually works.
 
 ### The brain doesn't store information in folders
 
-Long-term memory is associative. You don't retrieve a fact by remembering its location; you retrieve it by following links from related concepts — what cognitive scientists call *spreading activation* through semantic networks. A folder hierarchy fights that. Every note has exactly one home, and you're forced to remember where you put it.
+Long-term memory is associative. You don't retrieve a fact by remembering its location — you retrieve it by following links from related concepts (*spreading activation* through semantic networks). A folder hierarchy fights that. Every note has exactly one home, and you have to remember where you put it.
 
-This vault prioritizes links and tags over nesting. The numbered folders are a coarse domain split, not a taxonomy. The real structure emerges through `[[wikilinks]]`, `#tags`, and Dataview queries that surface notes via their relationships — closer to how associative recall actually works.
+This vault prioritizes links and tags over nesting. The numbered folders are a coarse domain split, not a taxonomy. The real structure emerges through `[[wikilinks]]`, `#tags`, and Dataview queries — closer to how associative recall actually works.
 
 ### Cognitive offloading
 
-Working memory holds about four items at once (Cowan, 2001). Anything past that is gone unless it's externalized. The *extended mind* thesis (Clark & Chalmers, 1998) argues that external tools — notebooks, files, search — function as genuine extensions of cognition, not just storage. A well-designed vault is a literal extension of your working memory.
+Working memory holds about four items at once (Cowan, 2001). Anything past that is gone unless it's externalized. The *extended mind* thesis (Clark & Chalmers, 1998) argues that external tools function as genuine extensions of cognition, not just storage. A well-designed vault is a literal extension of your working memory.
 
-The templates here are deliberately minimal: frontmatter, a Dataview query, blank space. They remove the *decision* of how to structure a note so you can spend working memory on the content, not the container.
+The templates are deliberately minimal: frontmatter, a Dataview query, blank space. They remove the *decision* of how to structure a note so working memory goes to the content, not the container.
 
 ### Spaced retrieval
 
-The Spaced Repetition plugin turns marked passages in your own notes into flashcards scheduled along the Ebbinghaus forgetting curve. You don't maintain a separate deck — you review your own writing on the schedule that actually produces durable memory.
+The Spaced Repetition plugin turns marked passages in your own notes into flashcards scheduled along the Ebbinghaus forgetting curve. You don't maintain a separate deck — you review your own writing on the schedule that produces durable memory.
 
 ### Dual coding
 
-Paivio's dual coding theory: information encoded both verbally and visually has more retrieval pathways than either alone. Obsidian's graph view, Canvas, and Bases give you visual representations of the same notes you wrote linearly. Same idea, two encodings, more hooks for recall.
+Paivio's dual coding theory: information encoded both verbally and visually has more retrieval pathways than either alone. Obsidian's graph view, Canvas, and Bases give you visual encodings of the same notes you wrote linearly. Same idea, two encodings, more hooks for recall.
 
 ---
 
-## How it benefits neurodivergent thinking
+## Built for neurodivergent thinking
 
-External scaffolding helps any brain, but it's load-bearing for brains with executive function differences. The choices in this setup are shaped by what helps in practice — not by a generic "everyone should be more organized" philosophy.
+External scaffolding helps any brain, but it's load-bearing for brains with executive function differences. The choices here are shaped by what helps in practice.
 
 ### ADHD
 
@@ -83,7 +89,7 @@ External scaffolding helps any brain, but it's load-bearing for brains with exec
 | Hyperfocus tangents getting lost | Capture into `0. Notes/` without thinking, retrieve later by topic instead of by location |
 | Time blindness | Calendar plugin + daily notes give time a visual anchor |
 | Decision fatigue on filing | Six numbered domain folders, not sixty arbitrary ones |
-| Task switching cost | Single vault means no app/context switch between learning, life, and work notes |
+| Task switching cost | Single vault means no app/context switch between learning, life, and work |
 
 ### Autism
 
@@ -92,7 +98,7 @@ External scaffolding helps any brain, but it's load-bearing for brains with exec
 | Systemizing and pattern recognition | Graph view and Dataview surface relationships you can see at a glance |
 | Predictability and consistent structure | Templates produce identical-shaped notes; folder convention is fixed |
 | Deep focus on special interests | Domain folders contain rabbit holes without polluting other areas |
-| Sensory regulation | Cupertino theme is muted, ribbon hidden; no notifications, no social feed, no algorithm |
+| Sensory regulation | Cupertino is muted, ribbon hidden; no notifications, no social feed, no algorithm |
 | Literal interpretation | Frontmatter fields are explicit and named — no guessing at intent |
 
 ### Dyslexia
@@ -103,46 +109,19 @@ External scaffolding helps any brain, but it's load-bearing for brains with exec
 | Visual fatigue with dense text | SF Pro typography + Cupertino spacing; Style Settings exposes font-size and line-height controls |
 | Sequential reading load | Graph view and Canvas let you navigate spatially instead of through long lists |
 
-### A note on framing
-
-Neurodivergence isn't a deficit to be patched. This vault doesn't try to make an ADHD or autistic brain work like a neurotypical one; it removes the parts of conventional note-taking that punish those brains for being themselves. It's a tool, not a treatment. If you're struggling, talk to a clinician.
+Neurodivergence isn't a deficit to be patched. This vault doesn't try to make any brain work like a neurotypical one — it removes the parts of conventional note-taking that punish those brains for being themselves. It's a tool, not a treatment. If you're struggling, talk to a clinician.
 
 ---
 
-## What you get
+## Setup
 
-- **Vault structure** — numbered top-level folders so they sort predictably (`0. Notes` through `5. Experiments`).
-- **Four templates** — Subject, Resource, Definition, and Book Analysis. Each uses YAML frontmatter and embedded Dataview queries so notes self-organize as you tag and link them.
-- **Cupertino theme** — pre-bundled, SF Pro fonts, calm muted accents.
-- **Six community plugins** wired together: Dataview, Templater, Calendar, Smart Connections, Style Settings, Spaced Repetition.
-- **Claude Code harness** — `.claude/`, `.agents/skills/`, and `skills-lock.json` set up with five Obsidian-aware skills (defuddle, json-canvas, obsidian-bases, obsidian-cli, obsidian-markdown) plus a custom book-analyst skill that walks you through writing a book reflection.
-
-What you don't get: notes. The vault ships empty so it's yours to fill.
-
----
-
-## The AI layer
-
-Two complementary tools:
-
-| Tool | Runs on | What it does |
-|---|---|---|
-| **Smart Connections** (Obsidian plugin) | Your machine — local embeddings (TaylorAI/bge-micro-v2) and Ollama for chat | Semantic search across your vault. Find the note you forgot you wrote. Optional chat with your own notes as context. |
-| **Claude Code** (CLI) | Anthropic API + local file access | An agent that can read, write, and reorganize your vault. The bundled skills teach it Obsidian wikilinks, callouts, properties, and Canvas/Bases formats so output looks native. |
-
-Both are optional. The vault works fine as a plain Obsidian setup if you skip them.
-
----
-
-## Prerequisites
+### Prerequisites
 
 - [Obsidian](https://obsidian.md/) (desktop)
 - Optional: [Claude Code](https://claude.com/claude-code) for the AI harness
 - Optional: [Ollama](https://ollama.com/) for Smart Connections local chat
 
----
-
-## Setup
+### Steps
 
 1. **Clone**
 
@@ -150,39 +129,39 @@ Both are optional. The vault works fine as a plain Obsidian setup if you skip th
    git clone https://github.com/vokal-jack/connected-thinking ~/Documents/connected-thinking
    ```
 
-2. **Open the vault in Obsidian**
+2. **Open the vault**
 
-   Obsidian → *Open folder as vault* → select `connected-thinking/brAIn/`.
+   Obsidian → *Open folder as vault* → `connected-thinking/brAIn/`.
 
 3. **Install community plugins**
 
-   Settings → Community plugins → turn off Restricted mode. Install these six. They'll auto-enable from the vault config once installed:
+   Settings → Community plugins → turn off Restricted mode. Install all six. They auto-enable from the vault config:
 
-   | Plugin | Purpose |
-   |---|---|
-   | Dataview | SQL-like queries inside notes |
-   | Templater | Scripted templates (`<% %>` syntax) |
-   | Calendar | Daily-note navigation |
-   | Smart Connections | Local AI semantic search + chat |
-   | Style Settings | Theme customization UI |
-   | Spaced Repetition | Flashcards over your own notes |
+   - Dataview
+   - Templater
+   - Calendar
+   - Smart Connections
+   - Style Settings
+   - Spaced Repetition
 
-4. **Point template plugins at `Templates/`**
+4. **Wire up the templates folder**
 
    - Settings → Templates → Template folder location: `Templates`
    - Settings → Templater → Template folder location: `Templates`
 
-5. **Theme**
+5. **Activate the theme**
 
-   Cupertino is bundled. Settings → Appearance → Theme → Cupertino.
+   Settings → Appearance → Theme → Cupertino. (Already bundled.)
 
 6. **(Optional) Claude Code**
 
-   Open the repo root with `claude .`. The harness loads `.claude/settings.local.json` and resolves skills via `skills-lock.json` automatically.
+   `cd ~/Documents/connected-thinking && claude .` — the harness loads `.claude/settings.local.json` and resolves skills via `skills-lock.json` automatically.
 
 ---
 
-## Folder convention
+## Daily use
+
+### The folder model
 
 | Folder | Use |
 |---|---|
@@ -194,13 +173,9 @@ Both are optional. The vault works fine as a plain Obsidian setup if you skip th
 | `5. Experiments/` | Sandbox |
 | `Templates/` | Templater source files |
 
-Frontmatter conventions for each note type are documented in [`CLAUDE.md`](./CLAUDE.md).
+Numbering forces a stable sort order without depending on Obsidian's per-folder ordering UI. Frontmatter conventions for each note type are documented in [`CLAUDE.md`](./CLAUDE.md).
 
-The numbering is intentional: it forces a stable sort order in the file tree without relying on Obsidian's per-folder ordering UI.
-
----
-
-## How notes self-organize
+### How notes self-organize
 
 The Definition and Resource templates ship with a Dataview query like:
 
@@ -209,7 +184,24 @@ list
 from [[]] and #definition
 ```
 
-`[[]]` resolves to the current note, so any note that links here and is tagged `#definition` shows up automatically. You write the link once when you create a definition, and the parent subject note picks it up forever after. No manual indexing.
+`[[]]` resolves to the current note, so any note that links here and is tagged `#definition` shows up automatically. Link a definition once when you create it; the parent subject note picks it up forever after. No manual indexing.
+
+### Working with the AI layer
+
+| Tool | When you'd reach for it |
+|---|---|
+| **Smart Connections** (in Obsidian) | "Find the note I wrote about this topic" — even when you can't remember the title or exact words |
+| **Claude Code** (terminal) | "Write a new definition note from this article" / "Reorganize my reading list" / "Summarize what I learned about X across these five notes" |
+
+Both are optional. The vault works fine as a plain Obsidian setup if you skip them.
+
+---
+
+## Customizing
+
+This is a starter, not a framework. Rename `brAIn/`, swap the numbered folders for your own domains, edit the templates — nothing breaks as long as the templates folder name stays in sync with the Templater setting.
+
+The Claude Code skills under `.agents/skills/` are individually swappable; check `skills-lock.json` for each one's source.
 
 ---
 
@@ -217,21 +209,13 @@ from [[]] and #definition
 
 | Ignored | Why |
 |---|---|
-| `.obsidian/plugins/` | Plugin code lives in the Obsidian Community Plugins registry — install via the UI, don't vendor it |
+| `.obsidian/plugins/` | Plugin code lives in Obsidian's Community Plugins registry — install via the UI, don't vendor it |
 | `.obsidian/workspace.json` | Per-machine pane layout |
-| `.smart-env/` | Smart Connections embeddings cache; rebuilds locally on first run |
+| `.smart-env/` | Smart Connections embeddings cache; rebuilds on first run |
 | `.trash/`, `.DS_Store` | OS / Obsidian noise |
 | `.claude/settings.json`, `.claude/plans/`, `.claude/projects/` | Per-machine Claude Code state |
 
-No secrets are committed. No `data.json` from any plugin ships in this repo, so you'll configure Smart Connections (model choice, Ollama endpoint, OpenRouter fallback if you use one) yourself.
-
----
-
-## Customizing
-
-This is a starter, not a framework. Rename the `brAIn/` directory, swap the numbered folders for your own domains, edit the templates — none of it will break the harness as long as you keep the templates folder name in sync with the Templater setting.
-
-The Claude Code skills under `.agents/skills/` are individually swappable; check `skills-lock.json` for the source of each.
+No secrets are committed. No plugin `data.json` ships in this repo, so you'll configure Smart Connections (model, Ollama endpoint, optional OpenRouter fallback) yourself on first run.
 
 ---
 
